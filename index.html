@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>test stripe-elements</title>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="import" href="bower_components/stripe-elements/stripe-elements.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <link rel="import" href="bower_components/show-json/show-json.html">
+
+
+  </head>
+  <body>
+    <div >
+        <dom-module id="test-se">
+            <template>
+                <paper-input label="Stripe Publishable Key" value="{{key}}"></paper-input>
+                <stripe-elements publishable-key="[[key]]" token="{{token}}"></stripe-elements>
+                <show-json hide-copy-button json="[[token]]"></show-json>
+            </template>
+            <script>
+                class TestSE extends Polymer.Element {
+                    static get is() { return 'test-se'; }
+
+                    static get properties (){
+                        return {
+                            key: {
+                                type: String,
+                                value: null
+                            }
+                        }
+                    }
+                }
+                window.customElements.define(TestSE.is, TestSE);
+            </script>
+        </dom-module>    
+        <test-se></test-se>
+                            
+    </div>
+  </body>
+</html>
+
+
